@@ -5,12 +5,12 @@ class HomeView extends StatelessWidget {
   HomeView({super.key});
 
   final cards = <Map<String, dynamic>>[
-    {'elevation': 0.0, 'label': 'Elevation 0'},
-    {'elevation': 1.0, 'label': 'Elevation 1'},
-    {'elevation': 2.0, 'label': 'Elevation 2'},
-    {'elevation': 3.0, 'label': 'Elevation 3'},
-    {'elevation': 4.0, 'label': 'Elevation 4'},
-    {'elevation': 5.0, 'label': 'Elevation 5'},
+    {'elevation': 'Prueba 1', 'label': 'Nota 0'},
+    {'elevation': 'Prueba 2', 'label': 'Elevation 1'},
+    {'elevation': 'Prueba 3', 'label': 'Elevation 2'},
+    {'elevation': 'Prueba 4', 'label': 'Elevation 3'},
+    {'elevation': 'Prueba 5', 'label': 'Elevation 4'},
+    {'elevation': 'Prueba 6', 'label': 'Elevation 5'},
   ];
 
   @override
@@ -31,8 +31,7 @@ class HomeView extends StatelessWidget {
           ),
         ),
         ...cards.map(
-          (card) =>
-              CardType3(elevation: card['elevation'], label: card['label']),
+          (card) => CardType3(nombre: card['elevation'], edad: card['label']),
         ),
       ]),
     );

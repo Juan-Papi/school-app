@@ -9,6 +9,6 @@ class TipoNotaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const CustomAppbar()), body: TipoNotaView());
+        appBar: AppBar(title: const CustomAppbar()), body: TipoNotaView(estudiante: 'hola',));
   }
 }
