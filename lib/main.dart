@@ -22,6 +22,7 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     performLogin();
+    fetchStudents();
   }
 
   void performLogin() async {
@@ -32,6 +33,30 @@ class _MainAppState extends State<MainApp> {
 
     try {
       Response response = await dio.post(url, data: body);
+      print('Response status: ${response.statusCode}');
+      print('Response data: ${response.data}');
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error:');
+        print('STATUS: ${e.response!.statusCode}');
+        print('DATA: ${e.response!.data}');
+        print('HEADERS: ${e.response!.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
+    }
+  }
+
+  void fetchStudents() async {
+    var dio = Dio();
+    var url = 'http://192.168.100.111:8069/api/students/by_tutor';
+    var token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE3MTgyMTY3MTl9.N_HbUc_8j6l-E8mP5gzwBdbvBBWMYWfCJTZN4A9ck2Q'; // Reemplaza esto con tu token real
+
+    try {
+      Response response = await dio.get(url,
+          options: Options(headers: {"Authorization": "Bearer $token"}));
       print('Response status: ${response.statusCode}');
       print('Response data: ${response.data}');
     } on DioError catch (e) {
